@@ -19,9 +19,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,16 +44,22 @@ public class MainActivity extends AppCompatActivity {
         list.setOnItemClickListener(this.itemClickedHandler);
 
         // Storage
-        File file = new File(this.getFilesDir(), "storage");
-        String store  = String.join(",", products);
-        try {
-            FileOutputStream fos = this.openFileOutput("storage", Context.MODE_PRIVATE)
-            fos.write(store.toByteArray());
-        } catch (FileNotFoundException) {
-            Log.d("file", "File not found");
+        //File file = new File(this.getFilesDir(), "storage");
+        StringBuilder storeBuilder = new StringBuilder();
+        for (String product: products) {
+            storeBuilder.append(product).append(",");
         }
 
+        String store = storeBuilder.toString();
 
+        try {
+            FileOutputStream fos = this.openFileOutput("storage", Context.MODE_PRIVATE);
+            fos.write(store.getBytes());
+        } catch (IOException e) {
+            Log.d("storage_write", "File exception.");
+        }
+
+        this.accessStorage("storage");
     }
 
     private AdapterView.OnItemClickListener itemClickedHandler = new AdapterView.OnItemClickListener() {
@@ -163,5 +174,29 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    public void accessStorage(String filename) {
+        try {
+            FileInputStream fis = this.openFileInput(filename);
+            InputStreamReader inputStreamReader = new InputStreamReader(fis, StandardCharsets.UTF_8);
+
+            StringBuilder stringBuilder = new StringBuilder();
+            try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
+                String line = reader.readLine();
+                while (line != null) {
+                    stringBuilder.append(line).append('\n');
+                    line = reader.readLine();
+                }
+            } catch (IOException e) {
+                Log.d("storageRead", "Error in using file reader.");
+            } finally {
+                String contents = stringBuilder.toString();
+                Log.d("storageRead", "File read: " + contents);
+                Toast.makeText(this, contents, Toast.LENGTH_SHORT).show();
+            }
+        } catch (FileNotFoundException e) {
+            Log.d("storageRead", "File not found in storage.");
+        }
     }
 }
