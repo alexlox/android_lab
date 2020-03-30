@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/accelerometerLabel"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:text="@string/accelerometer" />
+    <TextView
+        android:id="@+id/accelerometerValue"
+        android:layout_height="50dp"
+        android:layout_width="match_parent" />
+
+    <TextView
+        android:id="@+id/temperatureLabel"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:text="@string/temperature" />
+    <TextView
+        android:id="@+id/temperatureValue"
+        android:layout_height="50dp"
+        android:layout_width="match_parent" />
+
+    <TextView
+        android:id="@+id/gyroscopeLabel"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:text="@string/gyroscope" />
+    <TextView
+        android:id="@+id/gyroscopeValue"
+        android:layout_height="50dp"
+        android:layout_width="match_parent" />
+
+    <TextView
+        android:id="@+id/motionLabel"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:text="@string/motion" />
+    <TextView
+        android:id="@+id/motionValue"
+        android:layout_height="50dp"
+        android:layout_width="match_parent" />
+
+    <TextView
+        android:id="@+id/lightLabel"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:text="@string/light" />
+    <TextView
+        android:id="@+id/lightValue"
+        android:layout_height="25dp"
+        android:layout_width="match_parent" />
+
+    <TextView
+        android:id="@+id/latitudeLabel"
+        android:layout_height="25dp"
+        android:layout_width="match_parent"
+        android:text="@string/latitude" />
+    <TextView
+        android:id="@+id/latitudeValue"
+        android:layout_height="50dp"
+        android:layout_width="match_parent" />
+
+    <TextView
+        android:id="@+id/longitudeLabel"
+        android:layout_height="25dp"
+        android:layout_width="match_parent"
+        android:text="@string/longitude" />
+    <TextView
+        android:id="@+id/longitudeValue"
+        android:layout_height="25dp"
+        android:layout_width="match_parent" />
+</LinearLayout>

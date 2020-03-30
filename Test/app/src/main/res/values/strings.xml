@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Test</string>
+    <string name="accelerometer">Accelerometer</string>
+    <string name="temperature">Temperature</string>
+    <string name="gyroscope">Gyroscope</string>
+    <string name="motion">Motion</string>
+    <string name="light">Light</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
 </resources>

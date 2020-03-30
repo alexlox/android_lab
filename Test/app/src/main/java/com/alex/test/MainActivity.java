@@ -139,12 +139,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
+        Intent intent;
+
         switch (item.getItemId()) {
             case R.id.cart:
                 String message = "Sent message";
                 String key = "com.alex.test.message";
 
-                Intent intent = new Intent(this, CartActivity.class);
+                intent = new Intent(this, CartActivity.class);
                 intent.putExtra(key, message);
                 startActivity(intent);
                 break;
@@ -168,8 +170,13 @@ public class MainActivity extends AppCompatActivity {
                 alertBuilder.create().show();
                 break;
             case R.id.settings:
-                Intent i = new Intent(this, PrefActivity.class);
-                startActivity(i);
+                intent = new Intent(this, PrefActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.sensors:
+                intent = new Intent(this, SensorActivity.class);
+                startActivity(intent);
+                break;
             default:
         }
 
